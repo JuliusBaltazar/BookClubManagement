@@ -1,4 +1,17 @@
-﻿using BookClubManagementAPI.Entities;
+﻿// <copyright file="BookService.cs" company="Renti Coding Challenge">
+//  Renti Coding Challenge
+// </copyright>
+// ================================================================
+// Module   : BookService
+// Author   : Julius Baltazar Jr
+// Date     : 08/24/2024
+// ================================================================
+// Revision History
+// dd/mm/yyyy | Author | Change description
+// ================================================================
+// ================================================================
+
+using BookClubManagementAPI.Entities;
 using System.Collections.Generic;
 
 namespace BookClubManagementAPI.Services
@@ -8,6 +21,8 @@ namespace BookClubManagementAPI.Services
         private Dictionary<int, Book> DummyList=new Dictionary<int, Book>();
         public async Task<Book?> GetBook(int id)
         {
+            //TODO : Database is not yet implemented. Uses hardcoded values temporary.
+
             InitBooks();   
 
             if (DummyList.ContainsKey(id))
@@ -18,6 +33,8 @@ namespace BookClubManagementAPI.Services
 
         public async Task<IEnumerable<Book>?> SearchBook(SearchBookParameter searchParam)
         {
+            //TODO : Database is not yet implemented. Uses hardcoded values temporary.
+
             IEnumerable<Book> result=null;
 
             InitBooks();
@@ -49,6 +66,7 @@ namespace BookClubManagementAPI.Services
 
         private void InitBooks()
         {
+            //TODO : Database is not yet implemented. Uses hardcoded values temporary.
             DummyList = new Dictionary<int, Book>();
             DummyList.Add(1, new Book()
             {

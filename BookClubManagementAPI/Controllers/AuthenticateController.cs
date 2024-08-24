@@ -1,4 +1,18 @@
-﻿using BookClubManagementAPI.Dtos;
+﻿// ================================================================
+// <copyright file="AuthenticateController.cs" company="Renti Coding Challenge">
+//  Renti Coding Challenge
+// </copyright>
+// ================================================================
+// Module   : AuthenticateController
+// Author   : Julius Baltazar Jr
+// Date     : 08/24/2024
+// ================================================================
+// Revision History
+// dd/mm/yyyy | Author | Change description
+// ================================================================
+// ================================================================
+
+using BookClubManagementAPI.Dtos;
 using BookClubManagementAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +24,11 @@ namespace BookClubManagementAPI.Controllers
     public class AuthenticateController : ControllerBase
     {
 
+        /// <summary>
+        /// User Login
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("login")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
@@ -23,6 +42,11 @@ namespace BookClubManagementAPI.Controllers
             return Ok(null);
         }
 
+        /// <summary>
+        /// User sign up
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("register")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]

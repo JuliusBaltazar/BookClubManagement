@@ -1,8 +1,8 @@
-﻿// <copyright file="Club.cs" company="Renti Coding Challenge">
+﻿// <copyright file="UserBookList.cs" company="Renti Coding Challenge">
 //  Renti Coding Challenge
 // </copyright>
 // ================================================================
-// Module   : Club
+// Module   : UserBookList
 // Author   : Julius Baltazar Jr
 // Date     : 08/24/2024
 // ================================================================
@@ -13,11 +13,9 @@
 
 namespace BookClubManagementAPI.Entities
 {
-    public class Club
+    public class UserBookList
     {
-        public int? id { get; set; }
-        public string? name { get; set; }
-        public string? description { get; set; }
-        public IEnumerable<int>? members { get; set; }
+        public int? user_id { get; set; }
+        public IEnumerable<UserBook>? books { get; set;}
     }
 }

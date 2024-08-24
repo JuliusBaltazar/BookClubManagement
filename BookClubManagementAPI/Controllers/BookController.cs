@@ -1,4 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// ================================================================
+// <copyright file="BookController.cs" company="Renti Coding Challenge">
+//  Renti Coding Challenge
+// </copyright>
+// ================================================================
+// Module   : BookController
+// Author   : Julius Baltazar Jr
+// Date     : 08/24/2024
+// ================================================================
+// Revision History
+// dd/mm/yyyy | Author | Change description
+// ================================================================
+// ================================================================
+
+using Microsoft.AspNetCore.Mvc;
 using BookClubManagementAPI.Entities;
 using BookClubManagementAPI.Services;
 
@@ -42,6 +56,7 @@ namespace BookClubManagementAPI.Controllers
         [HttpPost]        
         public async Task<IActionResult> AddBook([FromBody] Book book)
         {
+            //TODO
             return Ok();
         }
 
@@ -54,6 +69,7 @@ namespace BookClubManagementAPI.Controllers
         [Route("{id}")]
         public async Task<IActionResult> RemoveBook(int id)
         {
+            //TODO
             return Ok();
         }
 
@@ -65,6 +81,7 @@ namespace BookClubManagementAPI.Controllers
         [HttpPut]       
         public async Task<IActionResult> UpdateBook([FromBody] Book book)
         {
+            //TODO
             return Ok();
         }
 
@@ -74,7 +91,7 @@ namespace BookClubManagementAPI.Controllers
         /// <param name="book"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("Search")]
+        [Route("search")]
         public async Task<IActionResult> Search([FromBody] SearchBookParameter searchParam)
         {
             var result = await _bookService.SearchBook(searchParam);

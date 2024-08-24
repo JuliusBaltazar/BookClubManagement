@@ -1,4 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// <copyright file="DiscussionThreadController.cs" company="Renti Coding Challenge">
+//  Renti Coding Challenge
+// </copyright>
+// ================================================================
+// Module   : DiscussionThreadController
+// Author   : Julius Baltazar Jr
+// Date     : 08/24/2024
+// ================================================================
+// Revision History
+// dd/mm/yyyy | Author | Change description
+// ================================================================
+// ================================================================
+
+using Microsoft.AspNetCore.Mvc;
 using BookClubManagementAPI.Entities;
 using BookClubManagementAPI.Services;
 

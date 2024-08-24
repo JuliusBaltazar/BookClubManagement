@@ -1,4 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// <copyright file="UserController.cs" company="Renti Coding Challenge">
+//  Renti Coding Challenge
+// </copyright>
+// ================================================================
+// Module   : UserController
+// Author   : Julius Baltazar Jr
+// Date     : 08/24/2024
+// ================================================================
+// Revision History
+// dd/mm/yyyy | Author | Change description
+// ================================================================
+// ================================================================
+
+using Microsoft.AspNetCore.Mvc;
 using BookClubManagementAPI.Entities;
 using BookClubManagementAPI.Services;
 
@@ -94,7 +107,40 @@ namespace BookClubManagementAPI.Controllers
         [Route("users/{id}/clubs/{clubId}")]
         public async Task<IActionResult> LeaveClub(int id, int clubId)
         {
+            //TODO
             return Ok();
+        }
+
+        /// <summary>
+        /// Get user list of reading books.
+        /// </summary>     
+        /// <param name="id"></param>
+        [HttpGet]
+        [Route("users/{id}/books")]
+        public async Task<IActionResult> GetReadingBooks(int id)
+        {
+            var result = await _userService.GetUserBooks(id);
+
+            if (result is null)
+                return NotFound();
+
+            return Ok(result);
+          
+
+        }
+
+        /// <summary>
+        /// Add a book on user list of reading books.
+        /// </summary>  
+        /// <param name="id"></param>
+        /// <param name="userBook"></param>
+        [HttpPost]
+        [Route("users/{id}/books")]
+        public async Task<IActionResult> AddReadingBooks(int id, [FromBody] UserBook userBook)
+        {
+            //TODO
+            return Ok();
+
         }
 
     }
