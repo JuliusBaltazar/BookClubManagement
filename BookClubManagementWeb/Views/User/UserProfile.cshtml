@@ -1,0 +1,130 @@
+﻿@model BookClubManagementWeb.Models.UserViewModel
+
+@{
+    ViewData["Title"] = "UserProfile";
+}
+
+<h1>My Book Club Details</h1>
+
+<div>
+   
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-1">
+            Full Name:
+        </dt>
+        <dd class = "col-sm-2">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt class="col-sm-1">
+            Preferences:
+        </dt>
+        <dd class="col-sm-2">
+            @Html.DisplayFor(model => model.ReadingPreference)
+        </dd>
+    </dl>
+</div>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+
+    .table-title {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+</style>
+<div class="table-title">Book List</div>
+<table class="table">  
+<thead>
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Author
+        </th>
+        <th>
+            Genre
+        </th>
+        <th>
+            Status
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+    @if (Model!=null)
+    {
+        @foreach (var item in Model.Books)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                        @Html.ActionLink("Change Status", "UserProfile", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "UserProfile", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Remove", "UserProfile", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    }
+</tbody>
+</table>
+
+<div class="table-title">Clubs Joined</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Club Name
+            </th>
+            <th>
+                Club Description
+            </th>            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model.Clubs)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClubName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>                    
+                    <td>                        
+                        @Html.ActionLink("Details", "UserProfile", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Leave", "UserProfile", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -4,6 +4,9 @@ namespace BookClubManagementWeb.Entities
 {
     public class UserAcccount
     {
+        [Required(ErrorMessage = "FullName is required.")]
+        public string FullName { get; set; }
+
         [Required(ErrorMessage = "Username is required.")]
         public string UserName { get; set; }
 

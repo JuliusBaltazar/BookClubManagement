@@ -22,14 +22,21 @@ namespace BookClubManagementWeb.Controllers
         [HttpPost]
         public IActionResult SignUp(SignUpViewModel model)
         {
-            if (ModelState.IsValid) 
+            
+            if (ModelState.IsValid)
             {
-                //TODO. Call API
-                var userName = model.UserName;
-                ModelState.Clear();
-                ViewBag.Message = $"{userName} registered successfully. Please login.";
-                return View();
+                //Success. Create temp cookie to store
+                var claims = new List<Claim>()
+                {
+                    new Claim(ClaimTypes.Name, model.FullName),
+                    new Claim(ClaimTypes.Role, "")
+                };
+
+                var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimIdentity));
+                return RedirectToAction("SecurePage");
             }
+
             return View(model);
         }
 
@@ -46,12 +53,34 @@ namespace BookClubManagementWeb.Controllers
             if (ModelState.IsValid)
             {
                 //TODO. Call API
+                var userFullName = model.UserName;
+                var userId = string.Empty;
+                switch(model.UserName.ToLower())
+                {
+                    case "booklover1":
+                        userFullName = "Alice Johnson";
+                        userId = "1";
+                        break;
+                    case "literaturefan":
+                        userFullName = "Bob Smith";
+                        userId = "2";
+                        break;
+                    case "novelenthusiast":
+                        userFullName = "Charlie Brown";
+                        userId = "3";
+                        break;
+                    default:
+                        ModelState.AddModelError("", "There is no account registered under this username.");
+                        return View(model);
+                        break;
+
+                }
 
                 //Success. Create temp cookie to store
                 var claims = new List<Claim>()
                 {
-                    new Claim(ClaimTypes.Name, model.UserName),
-                    new Claim(ClaimTypes.Role, "User")
+                    new Claim(ClaimTypes.Name, userFullName),
+                    new Claim(ClaimTypes.Role, userId)
                 };
 
                 var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -71,7 +100,18 @@ namespace BookClubManagementWeb.Controllers
         public IActionResult SecurePage()
         {
             ViewBag.Name = HttpContext.User.Identity.Name;
+            ViewBag.Id = "";
+            var claimsPrincipal = HttpContext.User;
+            if (claimsPrincipal != null)
+            {
+                var identity = claimsPrincipal.Identity as ClaimsIdentity;
+                ViewBag.Id = identity.FindFirst(ClaimTypes.Role)?.Value;
+                return RedirectToAction("UserProfile", "User");
+            }
+
             return View();
         }
+
+        
     }
 }

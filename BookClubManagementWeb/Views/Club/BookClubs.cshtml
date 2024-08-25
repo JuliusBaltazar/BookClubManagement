@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BookClubManagementWeb.Models.ClubViewModel>
+
+@{
+    ViewData["Title"] = "ClubsMaintenance";
+}
+
+<h1>Book Clubs</h1>
+
+<p>
+    <a asp-controller="Club" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClubName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClubName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Join", "BookClubs", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Discussion", "BookClubs", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "BookClubs", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "BookClubs", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

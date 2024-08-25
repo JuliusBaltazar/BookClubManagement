@@ -3,35 +3,29 @@
 {
     <ul class="navbar-nav flex-grow-1">
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Book Clubs</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">My Book List</a>
-        </li>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Club" asp-action="BookClubs">Book Clubs</a>
+        </li>        
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Book Search</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">My Profile</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Discussion</a>
-        </li>
+        </li>                
     </ul>
 
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="UserProfile">My Profile</a>
+        </li>
     <form asp-controller="Account" asp-action="LogOut" method="post" id="logoutForm" class="navbar-right">
-
-       
-        <ul class="nav navbar-nav navbar-right">            
+        
             <li>
                  <button type="submit" class=" btn btn-link navbar-btn nav-link text-dark">Log off</button>
             </li>
-        </ul>
+        
     </form>
+    </ul>
 }
 else
 {
-    <a class="navbar-brand" asp-area="">Book Club Management</a>
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Book Club Management</a>
     <ul class="navbar-nav flex-grow-1">
     </ul>
     <ul class="nav navbar-nav navbar-right">

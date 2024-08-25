@@ -4,6 +4,9 @@ namespace BookClubManagementWeb.Models
 {
     public class SignUpViewModel
     {
+        [Required(ErrorMessage = "FullName is required.")]
+        public string FullName { get; set; }
+
         [Required(ErrorMessage = "Username is required.")]
         public string UserName { get; set; }
 

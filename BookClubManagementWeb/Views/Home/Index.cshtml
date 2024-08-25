@@ -2,7 +2,34 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Book Club Management System</h1>
-    <img src="/Images/BookClub.jpg" />    
-</div>
+@* <div class="text-center">    
+    <h6>Welcome to Book Club Management System where users can join book clubs, participate in discussions, and manage their reading lists.</h6>
+    <img src="/Images/BookClub.jpg" />
+    @if (Context.User.Identity.Name == null)
+    {        
+        <div class="form-group">            
+            <a class="btn btn-primary" asp-controller="Account" asp-action="SignUp">Join Now</a>
+        </div>     
+    }
+    
+</div> *@
+@if (Context.User.Identity.Name == null)
+ {
+    <div class="text-center">
+        <h6>Welcome to Book Club Management System where users can join book clubs, participate in discussions, and manage their reading lists.</h6>
+        <img src="/Images/BookClub.jpg" />
+    
+            <div class="form-group">
+                <a class="btn btn-primary" asp-controller="Account" asp-action="SignUp">Join Now</a>
+            </div>
+    
+
+    </div>
+}
+else
+{    
+    <a asp-controller="User" asp-action="UserProfile">Proceed to user details.</a>
+}
+
+
+
