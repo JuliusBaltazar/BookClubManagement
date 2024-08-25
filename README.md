@@ -9,23 +9,30 @@ https://bookclubmanagementapi.azurewebsites.net/swagger/index.html
 **Website**  :  
 https://bookclubmanagementweb.azurewebsites.net/
 
+**Source code**  :  
+https://github.com/JuliusBaltazar/BookClubManagement
+
+
+
+**Testing and Data**
+
 At the moment the application is not yet connected to database and currently using hard coded data.
 
-The following data can be use to test API. 
+The following data can be use to test the API. 
 
-  *Book Id - {1,2,3}*
-  *Club Id - {1,2,3}*
-  *User Id - {1,2,3}*
+  *Book Id - {1,2,3}*   
+  *Club Id - {1,2,3}*   
+  *User Id - {1,2,3}*  
 
-The following logins can be use to test Website
+The following logins can be use to test the Website
 
  *User Login - "booklover1", "literaturefan", "novelenthusiast"*
 
  *Use Password - any*
 
-The data is from https://github.com/rentico/development-challenge/tree/master/data.
+The data used is from https://github.com/rentico/development-challenge/tree/master/data.
 
-Complete source Code is in GetHub repository under
 
-https://github.com/JuliusBaltazar/BookClubManagement
+
+
 
