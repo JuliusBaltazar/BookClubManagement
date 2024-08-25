@@ -5,6 +5,7 @@ namespace BookClubManagementWeb.Models
 {
     public class ClubViewModel
     {
+        public int Id { get; set; } 
         public string ClubName { get; set; }
         public string Description { get; set; }        
         public List<int> Members { get; set; }

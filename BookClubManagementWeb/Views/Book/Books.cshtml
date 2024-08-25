@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BookClubManagementWeb.Models.BookViewModel>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h1>Books</h1>
+<div>
+    @using(Html.BeginForm("Books","Book",FormMethod.Get))
+    {
+        <table>
+            <tr>
+                <td>
+                    <span><b>Search By:</b></span>
+                    @Html.RadioButton("searchBy","Title",true)
+                    <text>Title</text>
+                    @Html.RadioButton("searchBy", "Author", false)
+                    <text>Author</text>
+                    @Html.RadioButton("searchBy", "Genre", false)
+                    <text>Genre</text>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.TextBox("searchValue",null,new {Class= "form-control",placeholder="Enter Title or Author or Genre" })
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    <input type = "submit" value= "Search" class="btn btn-success"/>
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.ActionLink("Add to my booklist", "Books", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Books", new { /* id=item.PrimaryKey */ }) 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -21,15 +21,18 @@ namespace BookClubManagementWeb.Controllers
         [HttpPost]
         public IActionResult BookClubs(ClubViewModel model)
         {
-            if (ModelState.IsValid)
+            if (model!=null)
             {
+                var lastCount = ResourceData.Clubs.Count;
+
                 ResourceData.Clubs.Add(
                     new ClubViewModel()
                     {
+                        Id = lastCount++,
                         ClubName = model.ClubName,
                         Description = model.Description,
                         Members = new List<int>()
-                    });
+                    }); ;
             }
 
             var viewModel = new List<ClubViewModel>();
